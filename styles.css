@@ -11,7 +11,7 @@ h1 {
 h2 {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 22px;
-    color: #9111e6;
+    color: #ffffff;
     
 }
 
@@ -20,6 +20,7 @@ body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to top, #8000ff, #e0e0e0);
     color: #222;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 h3{
     color: #9111e6;
@@ -34,20 +35,20 @@ header {
     padding: 20px;
     text-align: center;
     z-index: 30;
-    /* /* Separa imagen y texto a los extremos */
+    transition: background-color 0.3s ease;
 }
 
 header h1 {
-    margin-top: 12px; ;
+    margin-top: 12px;
     margin-bottom: 10px;
 }
 header img {
-    height: 50px; /* Ajusta el tamaño del logo */
-    margin-right: 20px; /* Espacio entre el logo y el texto */
+    height: 50px;
+    margin-right: 20px;
 }
 header nav {
     margin-top: 12px;
-    margin-left: auto; /* Empuja el menú hacia la derecha */
+    margin-left: auto;
 }
 
 .subti{
@@ -55,7 +56,7 @@ header nav {
     text-align: center;
     margin-top: 220px;
     margin-bottom: -23px;
-    
+    color: #9111e6;
 }
 .ul-nav {
     list-style: none;
@@ -81,11 +82,12 @@ header nav {
     margin: 20px auto;
     max-width: 800px;
     margin-top: 170px;
+    transition: background-color 0.3s ease;
 }
 #menu h2 {
     font-size: 24px;
     text-align: start;
-    color: #911112;
+    color: #ffffff;
     margin-bottom: 30px;
 }
 .menu-item {
@@ -109,25 +111,25 @@ header nav {
     
     background-color: #464141;
     background-image: url('https://acdn-us.mitiendanube.com/stores/001/771/149/products/unnamed-c67b503f0c81045b5617716063338578-640-0.webp');
-    background-size: cover; /* Para que la imagen cubra todo el área del contenedor */
-    background-position: center; /* Centra la imagen */
+    background-size: cover;
+    background-position: center;
 }.item--2{
     
     background-image: url('https://acdn-us.mitiendanube.com/stores/001/771/149/products/unnamed-aa2b29c73245f0a7a017718440720961-640-0.webp');
-    background-size: cover; /* Para que la imagen cubra todo el área del contenedor */
-    background-position: center; /* Centra la imagen */
+    background-size: cover;
+    background-position: center;
 }
 .item--3{
     
     background-image: url('https://acdn-us.mitiendanube.com/stores/001/771/149/products/unnamed-2f6654509362f1228617720407353404-640-0-9b95f8a8fdd3811deb17728329163296-640-0.webp');
-    background-size: cover; /* Para que la imagen cubra todo el área del contenedor */
-    background-position: center; /* Centra la imagen */
+    background-size: cover;
+    background-position: center;
 }
 .item--4{
     
     background-image: url('https://acdn-us.mitiendanube.com/stores/001/771/149/products/unnamed-47f29a4fdcdaf39f1c17708386752158-640-0.webp');
-    background-size: cover; /* Para que la imagen cubra todo el área del contenedor */
-    background-position: center; /* Centra la imagen */
+    background-size: cover;
+    background-position: center;
 }
 
 .menu-item:hover{
@@ -161,6 +163,7 @@ footer {
     text-align: center;
     padding: 10px;
     margin-top: 20px;
+    transition: background-color 0.3s ease;
 }
 /* Estilos para el botón Todos los productos */
 .boton-todos {
@@ -209,22 +212,265 @@ footer {
     text-decoration: none;
 }
 
-/* También quitar subrayado al pasar el mouse por si acaso */
 .menu-item-link:hover {
     text-decoration: none;
 }
+
+/* Estilos para el botón de WhatsApp */
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: transparent;
+    border: none;
+    color: #25D366;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px 0;
+}
+
+.btn-whatsapp img {
+    width: 64px;
+    height: 64px;
+    background: transparent;
+    mix-blend-mode: multiply;
+}
+
+.btn-whatsapp:hover {
+    background-color: rgba(37, 211, 102, 0.1);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(37, 211, 101, 0.848);
+}
+
+/* Estilos para el botón de Instagram */
+.btn-instagram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-instagram img {
+    width: 64px;
+    height: 64px;
+    background: transparent;
+    mix-blend-mode: multiply;
+}
+
+.btn-instagram:hover {
+    background-color: rgba(225, 48, 108, 0.1);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(225, 48, 108, 0.3);
+}
+
+/* Estilos para el botón de Email */
+.btn-email {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-email img {
+    width: 64px;
+    height: 64px;
+    background: transparent;
+    mix-blend-mode: multiply;
+}
+
+.btn-email:hover {
+    background-color: rgba(145, 17, 230, 0.1);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(145, 17, 230, 0.3);
+}
+
+/* Contenedor de botones de contacto */
+.contact-buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
 /* ========================================== */
-/* RESPONSIVE PARA CELULARES Y TABLETS */
+/* MODO OSCURO */
 /* ========================================== */
 
-/* Tablets (pantallas de hasta 768px) */
+.dark-mode-btn {
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    margin-left: 20px;
+    padding: 8px 12px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    background-color: #f0f0f0;
+}
+
+.dark-mode-btn:hover {
+    transform: scale(1.1);
+    background-color: #e0e0e0;
+}
+
+body.dark-mode {
+    background: linear-gradient(to top, #1a1a2e, #0f0f1a);
+    color: #f0f0f0;
+}
+
+body.dark-mode header {
+    background-color: #1a1a2e;
+    color: #9111e6;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+body.dark-mode header h1 {
+    color: #9111e6;
+}
+
+body.dark-mode .li-nav a {
+    color: #bb86fc;
+}
+
+body.dark-mode .subti {
+    color: #bb86fc;
+}
+
+body.dark-mode #menu {
+    background-color: rgba(26, 26, 46, 0.8);
+}
+
+body.dark-mode .menu-item {
+    background-color: #2a2a3e;
+    text-shadow: none;
+}
+
+body.dark-mode .menu-item h3 {
+    color: #bb86fc;
+}
+
+body.dark-mode .menu-item p {
+    color: #cccccc;
+}
+
+body.dark-mode .btn-todos-principal {
+    background: linear-gradient(135deg, #bb86fc, #6200ea);
+}
+
+body.dark-mode .btn-todos {
+    background-color: #bb86fc;
+    color: #1a1a2e !important;
+}
+
+body.dark-mode #about, 
+body.dark-mode #contact {
+    background-color: rgba(26, 26, 46, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+body.dark-mode footer {
+    background-color: #0f0f1a;
+    color: #bb86fc;
+}
+
+body.dark-mode .btn-whatsapp img,
+body.dark-mode .btn-instagram img,
+body.dark-mode .btn-email img {
+    mix-blend-mode: normal;
+    filter: brightness(0.9);
+}
+
+body.dark-mode .dark-mode-btn {
+    background-color: #2a2a3e;
+    color: #ffd700;
+}
+
+body.dark-mode .dark-mode-btn:hover {
+    background-color: #3a3a4e;
+}
+
+body.dark-mode .btn-email:hover {
+    background-color: rgba(187, 134, 252, 0.1);
+    box-shadow: 0 5px 15px rgba(187, 134, 252, 0.3);
+}
+
+body.dark-mode .productos-header h2 {
+    color: #bb86fc;
+}
+
+body.dark-mode .productos-header p {
+    color: #cccccc;
+}
+
+body.dark-mode .filtros-container {
+    background: #1a1a2e;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .filtros-group label {
+    color: #bb86fc;
+}
+
+body.dark-mode .filtros-group select {
+    background-color: #2a2a3e;
+    color: #f0f0f0;
+    border-color: #bb86fc;
+}
+
+body.dark-mode .producto-card {
+    background: #1a1a2e;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .producto-info h3 {
+    color: #bb86fc;
+}
+
+body.dark-mode .producto-info p {
+    color: #cccccc;
+}
+
+body.dark-mode .producto-precio {
+    color: #bb86fc;
+}
+
+body.dark-mode .contador-productos {
+    background-color: #2a2a3e;
+    color: #cccccc;
+}
+
+body.dark-mode .no-productos {
+    color: #cccccc;
+}
+
+/* ========================================== */
+/* RESPONSIVE */
+/* ========================================== */
+
 @media (max-width: 768px) {
     
-    /* Header - se vuelve vertical */
     header {
         flex-direction: column;
         padding: 15px;
         position: relative;
+        flex-wrap: wrap;
+        align-items: center;
     }
     
     header h1 {
@@ -233,10 +479,10 @@ footer {
     }
     
     header img {
-    height: 50px;
-    width: auto;  /* ← agregá esta línea para mantener proporción */
-    margin-right: 20px;
-    
+        height: 40px;
+        width: auto;
+        margin-right: 0;
+        margin-bottom: 5px;
     }
     
     header nav {
@@ -259,7 +505,12 @@ footer {
         font-size: 12px;
     }
     
-    /* Título principal */
+    .dark-mode-btn {
+        font-size: 24px;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+    
     .subti {
         margin-top: 30px;
         font-size: 16px;
@@ -267,7 +518,6 @@ footer {
         margin-bottom: 0;
     }
     
-    /* Sección de productos */
     #menu {
         margin-top: 30px;
         padding: 15px;
@@ -279,7 +529,6 @@ footer {
         text-align: center;
     }
     
-    /* Tarjetas de categorías */
     .menu-item {
         padding: 12px;
     }
@@ -297,7 +546,6 @@ footer {
         padding: 12px;
     }
     
-    /* Botón principal */
     .btn-todos-principal {
         padding: 12px 25px;
         font-size: 16px;
@@ -308,7 +556,6 @@ footer {
         margin-bottom: 10px;
     }
     
-    /* Secciones generales */
     section {
         margin: 50px 20px;
     }
@@ -321,14 +568,19 @@ footer {
         font-size: 14px;
     }
     
-    /* Footer */
     footer {
         font-size: 12px;
         padding: 15px;
     }
+
+    .btn-whatsapp img,
+    .btn-instagram img,
+    .btn-email img {
+        width: 50px;
+        height: 50px;
+    }
 }
 
-/* Celulares pequeños (pantallas de hasta 480px) */
 @media (max-width: 480px) {
     
     .subti {
@@ -365,66 +617,31 @@ footer {
     #about h2, #contact h2 {
         font-size: 20px;
     }
-}
-/* Viewport meta tag ya lo tenés en el HTML, pero asegurate */
-/* <meta name="viewport" content="width=device-width, initial-scale=1.0"> */
+    
+    .dark-mode-btn {
+        font-size: 20px;
+        padding: 5px 10px;
+    }
 
-/* Mejoras generales para móviles */
+    .btn-whatsapp img,
+    .btn-instagram img,
+    .btn-email img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
 @media (max-width: 768px) {
     body {
         font-size: 14px;
     }
     
-    /* Asegura que las imágenes de fondo no se recorten mal */
     .menu-item {
         background-size: cover !important;
         background-position: center !important;
     }
     
-    /* Espaciado general */
     .section_loader {
         padding-bottom: 20px;
     }
-}
-/* Tablets (pantallas de hasta 768px) */
-@media (max-width: 768px) {
-    
-    /* Header - se vuelve vertical */
-    header {
-        flex-direction: column;
-        padding: 15px;
-        position: relative;
-        align-items: center;  /* ← centra los elementos */
-    }
-    
-    /* Logo - tamaño fijo y proporcional */
-    header img {
-        height: 40px;
-        width: auto;  /* mantiene la proporción */
-        margin-right: 0;
-        margin-bottom: 5px;
-    }
-    
-    header h1 {
-        font-size: 24px;
-        margin-top: 5px;
-    }
-    
-    /* ... el resto del código ... */
-}
-
-/* Celulares pequeños (pantallas de hasta 480px) */
-@media (max-width: 480px) {
-    
-    /* Logo aún más pequeño en celulares */
-    header img {
-        height: 35px;
-        width: auto;
-    }
-    
-    header h1 {
-        font-size: 20px;
-    }
-    
-    /* ... el resto del código ... */
 }

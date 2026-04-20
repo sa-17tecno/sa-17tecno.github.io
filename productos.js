@@ -23,92 +23,161 @@ const productos = [
     { id: 21, nombre: "Mochila Negra", categoria: "Mochilas/Fundas", precio: 20000, imagen: "imagenes/mochila.png" }
 ];
 
-// Función para renderizar productos
-function renderizarProductos(productosFiltrados) {
+// Función para obtener parámetros de la URL
+function getParametroURL(nombre) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(nombre);
+}
+
+// Función para mostrar productos
+function mostrarProductos(productosAMostrar) {
     const grid = document.getElementById('productos-grid');
     const contador = document.getElementById('contador-productos');
     
-    if (productosFiltrados.length === 0) {
-        grid.innerHTML = '<div class="no-productos">😕 No hay productos en esta categoría</div>';
-        contador.textContent = 'Mostrando 0 productos';
+    if (!grid) {
+        console.error("No se encontró el elemento 'productos-grid'");
         return;
     }
     
-    contador.textContent = `Mostrando ${productosFiltrados.length} productos`;
+    if (productosAMostrar.length === 0) {
+        grid.innerHTML = '<div class="no-productos">😕 No hay productos en esta categoría</div>';
+        if (contador) contador.textContent = 'Mostrando 0 productos';
+        return;
+    }
     
-    grid.innerHTML = productosFiltrados.map(producto => `
-        <div class="producto-card">
-            <div class="producto-imagen" style="background-image: url('${producto.imagen || 'https://via.placeholder.com/300x200/9111e6/ffffff?text=SA17'}')"></div>
-            <div class="producto-info">
-                <h3>${producto.nombre}</h3>
-                <p class="producto-categoria">📁 ${producto.categoria}</p>
-                <div class="producto-precio">$${producto.precio.toLocaleString()}</div>
-                <button class="btn-comprar" data-id="${producto.id}">Ver más</button>
+    if (contador) contador.textContent = `Mostrando ${productosAMostrar.length} productos`;
+    
+    let html = '';
+    for (let i = 0; i < productosAMostrar.length; i++) {
+        const p = productosAMostrar[i];
+        html += `
+            <div class="producto-card">
+                <div class="producto-imagen" style="background-image: url('${p.imagen || 'https://via.placeholder.com/300x200/9111e6/ffffff?text=SA17'}')"></div>
+                <div class="producto-info">
+                    <h3>${p.nombre}</h3>
+                    <p class="producto-categoria">📁 ${p.categoria}</p>
+                    <div class="producto-precio">$${p.precio.toLocaleString()}</div>
+                    <button class="btn-comprar" data-nombre="${p.nombre}">Comprar</button>
+                </div>
             </div>
-        </div>
-    `).join('');
+        `;
+    }
     
-    // Agregar eventos a los botones "Ver más"
-    document.querySelectorAll('.btn-comprar').forEach(boton => {
-        boton.addEventListener('click', function() {
-            const id = parseInt(this.dataset.id);
-            const producto = productos.find(p => p.id === id);
-            alert(`📱 ${producto.nombre}\n💰 $${producto.precio.toLocaleString()}\n📁 ${producto.categoria}\n\nMás información disponible en breve. ¡Consultanos!`);
+    grid.innerHTML = html;
+    
+    // Eventos de los botones COMPRAR (WhatsApp con mensaje simple)
+    const botones = document.querySelectorAll('.btn-comprar');
+    for (let i = 0; i < botones.length; i++) {
+        botones[i].addEventListener('click', function() {
+            const nombreProducto = this.getAttribute('data-nombre');
+            const numero = "5492324617203";
+            const mensaje = `Hola! Quiero comprar: ${nombreProducto}`;
+            const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
         });
-    });
+    }
 }
 
-// Función para filtrar y ordenar productos
-function filtrarYOrdenar() {
-    let productosFiltrados = [...productos];
+// Función para filtrar
+function aplicarFiltros() {
+    let productosFiltrados = [];
     
-    // Filtrar por categoría
-    const categoria = document.getElementById('categoria-filtro').value;
-    if (categoria !== 'todos') {
-        productosFiltrados = productosFiltrados.filter(p => p.categoria === categoria);
+    for (let i = 0; i < productos.length; i++) {
+        productosFiltrados.push(productos[i]);
     }
     
-    // Ordenar por precio
-    const orden = document.getElementById('orden-precio').value;
-    if (orden === 'menor-mayor') {
-        productosFiltrados.sort((a, b) => a.precio - b.precio);
-    } else if (orden === 'mayor-menor') {
-        productosFiltrados.sort((a, b) => b.precio - a.precio);
-    }
-    
-    renderizarProductos(productosFiltrados);
-}
-
-// Inicializar la página cuando carga
-document.addEventListener('DOMContentLoaded', function() {
-    // Mostrar todos los productos al inicio
-    renderizarProductos(productos);
-    
-    // Agregar event listeners a los filtros
-    document.getElementById('categoria-filtro').addEventListener('change', filtrarYOrdenar);
-    document.getElementById('orden-precio').addEventListener('change', filtrarYOrdenar);
-    
-    // Animación de entrada para las tarjetas
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 50);
-                observer.unobserve(entry.target);
+    const categoriaSelect = document.getElementById('categoria-filtro');
+    if (categoriaSelect) {
+        const categoria = categoriaSelect.value;
+        if (categoria !== 'todos') {
+            productosFiltrados = [];
+            for (let i = 0; i < productos.length; i++) {
+                if (productos[i].categoria === categoria) {
+                    productosFiltrados.push(productos[i]);
+                }
             }
-        });
-    });
+        }
+    }
     
-    // Esperar un poco para que las tarjetas existan en el DOM
-    setTimeout(() => {
-        const cards = document.querySelectorAll('.producto-card');
-        cards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(card);
-        });
-    }, 100);
+    const ordenSelect = document.getElementById('orden-precio');
+    if (ordenSelect) {
+        const orden = ordenSelect.value;
+        if (orden === 'menor-mayor') {
+            productosFiltrados.sort(function(a, b) {
+                return a.precio - b.precio;
+            });
+        } else if (orden === 'mayor-menor') {
+            productosFiltrados.sort(function(a, b) {
+                return b.precio - a.precio;
+            });
+        }
+    }
+    
+    mostrarProductos(productosFiltrados);
+}
+
+// INICIALIZACIÓN
+window.addEventListener('DOMContentLoaded', function() {
+    console.log("Página cargada, iniciando productos...");
+    
+    const categoriaURL = getParametroURL('categoria');
+    
+    if (categoriaURL) {
+        const filtro = document.getElementById('categoria-filtro');
+        if (filtro) {
+            filtro.value = categoriaURL;
+            console.log("Categoría seleccionada:", categoriaURL);
+        }
+    }
+    
+    const filtroCategoria = document.getElementById('categoria-filtro');
+    const filtroOrden = document.getElementById('orden-precio');
+    
+    if (filtroCategoria) {
+        filtroCategoria.addEventListener('change', aplicarFiltros);
+    }
+    
+    if (filtroOrden) {
+        filtroOrden.addEventListener('change', aplicarFiltros);
+    }
+    
+    aplicarFiltros();
+    
+    if (categoriaURL) {
+        const subtitulo = document.querySelector('.productos-header p');
+        if (subtitulo) {
+            const nombres = {
+                'Auriculares': '🎧 Auriculares',
+                'Cargadores': '🔋 Cargadores y Cables',
+                'Smartwatchs': '⌚ Smartwatches',
+                'Iluminación': '💡 Iluminación'
+            };
+            if (nombres[categoriaURL]) {
+                subtitulo.innerHTML = `Mostrando productos de ${nombres[categoriaURL]}`;
+            }
+        }
+    }
 });
+
+// MODO OSCURO
+const botonModoOscuro = document.getElementById('darkModeBtn');
+const modoGuardado = localStorage.getItem('darkMode');
+
+if (modoGuardado === 'activado') {
+    document.body.classList.add('dark-mode');
+    if (botonModoOscuro) botonModoOscuro.textContent = '☀️';
+}
+
+if (botonModoOscuro) {
+    botonModoOscuro.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        
+        if (document.body.classList.contains('dark-mode')) {
+            botonModoOscuro.textContent = '☀️';
+            localStorage.setItem('darkMode', 'activado');
+        } else {
+            botonModoOscuro.textContent = '🌙';
+            localStorage.setItem('darkMode', 'desactivado');
+        }
+    });
+}

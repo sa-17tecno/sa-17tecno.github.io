@@ -16,10 +16,10 @@
                 <li class="li-nav"><a href="#menu">Menú</a></li>
                 <li class="li-nav"><a href="#about">Sobre Nosotros</a></li>
                 <li class="li-nav"><a href="#contact">Contacto</a></li>
-                <!-- Botón agregado en el menú -->
                 <li class="li-nav boton-todos"><a href="productos.html" class="btn-todos">Todos los productos</a></li>
             </ul>
         </nav>
+        <button id="darkModeBtn" class="dark-mode-btn">🌙</button>
     </header>
 
     <div>
@@ -29,39 +29,34 @@
     <section id="menu">
         <h2>Elegi entre nuestras categorias</h2>
         
-        <!-- Audio y auriculares - clickeable -->
-        <a href="productos.html" class="menu-item-link">
+        <a href="productos.html?categoria=Auriculares" class="menu-item-link">
             <div class="menu-item item--1">
                 <h3>Audio y auriculares</h3>
                 <p>El sonido que buscás para tu día a día. Auriculares versátiles, cómodos y con la calidad justa para que disfrutes de tu música donde quieras</p>
             </div>
         </a>
         
-        <!-- Cargadores y cables - clickeable -->
-        <a href="productos.html" class="menu-item-link">
+        <a href="productos.html?categoria=Cargadores" class="menu-item-link">
             <div class="menu-item item--2">
                 <h3>Cargadores y cables</h3>
                 <p>Mantené tus dispositivos siempre listos. Cargadores prácticos y funcionales para la carga diaria de tu celular.</p>
             </div>
         </a>
         
-        <!-- Smartwatchs - clickeable -->
-        <a href="productos.html" class="menu-item-link">
+        <a href="productos.html?categoria=Smartwatchs" class="menu-item-link">
             <div class="menu-item item--3">
                 <h3>Smartwatchs</h3>
                 <p>La tecnología que se adapta a tu ritmo. Smartwatches para mantenerte conectado, cuidar tu salud y organizar tu día con estilo.</p>
             </div>
         </a>
         
-        <!-- Iluminación - clickeable -->
-        <a href="productos.html" class="menu-item-link">
+        <a href="productos.html?categoria=Iluminación" class="menu-item-link">
             <div class="menu-item item--4">
                 <h3>Iluminación</h3>
                 <p>La compañía luminosa para tus noches. Diseños prácticos que te dan la luz necesaria para relajarte.</p>
             </div>
         </a>
         
-        <!-- Botón Ver todos los productos debajo de las categorías -->
         <div class="container-boton-todos">
             <a href="productos.html" class="btn-todos-principal">Ver todos los productos →</a>
         </div>
@@ -75,11 +70,19 @@
 
     <section id="contact">
         <h2>Contacto</h2>
-        <button id="whatsappBtn" class="btn-whatsapp">
-    <img src="whatsapp-icon.png" alt="WhatsApp">
-    Contáctanos
-</button>
-        <p>Dirección: Calle Ficticia 123, Ciudad, Argentina</p>
+        <div class="contact-buttons">
+            <button id="whatsappBtn" class="btn-whatsapp">
+                <img src="imagenes/icons-whatsapp.png" alt="WhatsApp">
+            </button>
+            
+            <button id="instagramBtn" class="btn-instagram">
+                <img src="imagenes/icons-instagram.png" alt="Instagram">
+            </button>
+            
+            <button id="emailBtn" class="btn-email">
+                <img src="imagenes/icon-email.png" alt="Email">
+            </button>
+        </div>
     </section>
 
     <footer>
