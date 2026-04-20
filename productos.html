@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos los Productos - SA17 Tecno</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="productos.css">
+</head>
+<body>
+    <header>
+        <img src="imagenes/logo.png" alt="Logo de SA17 Tecnologia">
+        <h1>TODOS LOS PRODUCTOS</h1>
+        <nav>
+            <ul class="ul-nav">
+                <li class="li-nav"><a href="index.html">Inicio</a></li>
+                <li class="li-nav"><a href="index.html#about">Sobre Nosotros</a></li>
+                <li class="li-nav"><a href="index.html#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="productos-header">
+        <h2>Nuestros Productos</h2>
+        <p>Descubrí toda nuestra colección</p>
+    </div>
+
+    <!-- Barra de filtros y orden -->
+    <div class="filtros-container">
+        <div class="filtros-group">
+            <label for="categoria-filtro">🔍 Filtrar por categoría:</label>
+            <select id="categoria-filtro">
+                <option value="todos">Todos los productos</option>
+                <option value="Auriculares">🎧 Auriculares</option>
+                <option value="Cargadores">🔋 Cargadores</option>
+                <option value="Smartwatchs">⌚ Smartwatchs</option>
+                <option value="Parlantes">🔊 Parlantes</option>
+                <option value="Iluminación">💡 Iluminación</option>
+                <option value="Mochilas/Fundas">🎒 Mochilas/Fundas</option>
+            </select>
+        </div>
+
+        <div class="filtros-group">
+            <label for="orden-precio">💰 Ordenar por precio:</label>
+            <select id="orden-precio">
+                <option value="default">Sin orden</option>
+                <option value="menor-mayor">Menor a mayor</option>
+                <option value="mayor-menor">Mayor a menor</option>
+            </select>
+        </div>
+
+        <div class="filtros-group">
+            <span class="contador-productos" id="contador-productos">Mostrando 0 productos</span>
+        </div>
+    </div>
+
+    <section class="productos-grid" id="productos-grid">
+        <!-- Los productos se cargarán dinámicamente con JavaScript -->
+    </section>
+
+    <footer>
+        <p>&copy; 2026 SA17 Tecno. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="productos.js"></script>
+</body>
+</html>
