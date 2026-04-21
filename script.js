@@ -10,7 +10,7 @@ document.getElementById('whatsappBtn').addEventListener('click', function() {
 const instagramBtn = document.getElementById('instagramBtn');
 if (instagramBtn) {
     instagramBtn.addEventListener('click', function() {
-        const url = "https://www.instagram.com/TU_USUARIO";
+        const url = "https://www.instagram.com/sa.diecisiete";
         window.open(url, '_blank');
     });
 }
